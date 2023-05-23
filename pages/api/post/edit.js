@@ -7,7 +7,6 @@ export default async function handler(request, answer) {
       title: request.body.title,
       content: request.body.content,
     };
-    console.log(editInfo);
     const db = (await connectDB).db("forum");
     let postdb = await db.collection("post");
     postdb.updateOne(
