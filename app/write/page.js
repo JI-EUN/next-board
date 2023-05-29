@@ -1,4 +1,9 @@
-export default function Write(){
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+
+export default async function Write(){
+  let session = await getServerSession(authOptions);
+  if(session){
     return(
         <div>
             <h4>글작성</h4>
@@ -9,4 +14,10 @@ export default function Write(){
             </form>
         </div>
     )
+  }else{
+    return(
+        <div>로그인 하십쇼!</div>
+    )
+  }
+    
 }
